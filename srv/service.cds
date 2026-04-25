@@ -11,6 +11,7 @@ service Products {
     entity Sales            as projection on entities.Sales;
 
     /** Entities - Value Help */
+    @readonly
     entity Status           as projection on entities.Status;
 
     @readonly

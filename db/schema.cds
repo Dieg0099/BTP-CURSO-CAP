@@ -7,23 +7,23 @@ using {
 } from '@sap/cds/common';
 
 entity Products : cuid, managed {
-    product      : String(10);
-    productName  : String(40);
-    description  : LargeString;
-    category     : Association to Categories; //category_ID       --> ValueHelp
-    subCategory  : Association to SubCategories; //subCategory_ID    --> ValueHelp
-    statu        : Association to Status; //statu_code        --> InStock, OutOfStock o LowAvailability
-    price        : Decimal(6, 2); //0001.23
-    rating       : Decimal(3, 2); //1.05
-    currency     : String;
-    detail       : Association to ProductDetails; //(detail_ID) --> 9ea4f4c3-6fac-4a79-a278-7f4516ab5a37
-    supplier     : Association to Suppliers;
-    toReviews    : Association to many Reviews
-                       on toReviews.product = $self;
+    product       : String(10);
+    productName   : String(40);
+    description   : LargeString;
+    category      : Association to Categories; //category_ID       --> ValueHelp
+    subCategory   : Association to SubCategories; //subCategory_ID    --> ValueHelp
+    statu         : Association to Status; //statu_code        --> InStock, OutOfStock o LowAvailability
+    price         : Decimal(6, 2); //0001.23
+    rating        : Decimal(3, 2); //1.05
+    currency      : String;
+    detail        : Association to ProductDetails; //(detail_ID) --> 9ea4f4c3-6fac-4a79-a278-7f4516ab5a37
+    supplier      : Association to Suppliers;
+    toReviews     : Association to many Reviews
+                        on toReviews.product = $self;
     toInventories : Association to many Inventories
-                       on toInventories.product = $self;
-    toSales      : Association to many Sales
-                       on toSales.product = $self;
+                        on toInventories.product = $self;
+    toSales       : Association to many Sales
+                        on toSales.product = $self;
 };
 
 type myDecimal : Decimal(8, 3);
@@ -99,9 +99,10 @@ entity Departments : cuid {
 };
 
 entity Status : CodeList {
-    key code : String(20) enum {
+    key code        : String(20) enum {
             InStock = 'In Stock';
             OutOfStock = 'Out of Stock';
             LowAvailability = 'Low Availability';
         };
+        criticality : Int16;
 };
