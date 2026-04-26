@@ -1,4 +1,4 @@
-using { com.logaligroup as entities } from '../db/schema';
+using {com.logaligroup as entities} from '../db/schema';
 
 service Products {
 
@@ -19,4 +19,7 @@ service Products {
 
     @readonly
     entity VH_SubCategories as projection on entities.SubCategories;
+
+    @readonly
+    entity VH_Departments    as projection on entities.Departments;
 };

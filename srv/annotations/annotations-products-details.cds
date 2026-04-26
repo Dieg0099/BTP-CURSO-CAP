@@ -1,4 +1,5 @@
-using {Products as myservice} from '../service';
+ using {Products as myservice} from '../service';
+
 
 annotate myservice.ProductDetails with {
     width      @title: 'Width'   @Measures.Unit: unitVolume;
@@ -7,5 +8,4 @@ annotate myservice.ProductDetails with {
     weight     @title: 'Weight'  @Measures.Unit: unitWeight;
     unitVolume @Common.IsUnit;
     unitWeight @Common.IsUnit;
-
 };
